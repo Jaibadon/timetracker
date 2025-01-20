@@ -1,0 +1,60 @@
+[17-Jan-2025 04:58:52 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function import() in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttUserHelper.class.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttUserHelper.class.php on line 5
+[17-Jan-2025 04:58:52 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function import() in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttUserHelper.class.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttUserHelper.class.php on line 5
+[17-Jan-2025 04:58:53 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function import() in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttInvoiceHelper.class.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttInvoiceHelper.class.php on line 5
+[17-Jan-2025 04:58:53 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function import() in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttInvoiceHelper.class.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttInvoiceHelper.class.php on line 5
+[17-Jan-2025 04:58:53 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function import() in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttInvoiceHelper.class.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttInvoiceHelper.class.php on line 5
+[17-Jan-2025 04:58:53 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function import() in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttUserHelper.class.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttUserHelper.class.php on line 5
+[17-Jan-2025 04:58:53 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function import() in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttInvoiceHelper.class.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttInvoiceHelper.class.php on line 5
+[17-Jan-2025 04:58:53 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function import() in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttUserHelper.class.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttUserHelper.class.php on line 5
+[17-Jan-2025 05:00:51 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function import() in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttUserHelper.class.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttUserHelper.class.php on line 5
+[17-Jan-2025 05:00:55 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function import() in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttInvoiceHelper.class.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttInvoiceHelper.class.php on line 5
+[17-Jan-2025 05:06:24 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function import() in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttInvoiceHelper.class.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttInvoiceHelper.class.php on line 5
+[17-Jan-2025 05:07:13 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function import() in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttInvoiceHelper.class.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttInvoiceHelper.class.php on line 5
+[17-Jan-2025 05:08:01 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function import() in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttInvoiceHelper.class.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttInvoiceHelper.class.php on line 5
+[17-Jan-2025 05:14:00 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function import() in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttUserHelper.class.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttUserHelper.class.php on line 5
+[17-Jan-2025 05:14:48 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function import() in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttUserHelper.class.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/ttUserHelper.class.php on line 5

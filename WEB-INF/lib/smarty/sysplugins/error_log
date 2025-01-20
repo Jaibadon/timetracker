@@ -1,0 +1,4 @@
+[17-Jan-2025 04:58:36 UTC] PHP Fatal error:  Uncaught Error: Class "Smarty_Internal_Method_LoadFilter" not found in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/smarty/sysplugins/smarty_internal_method_unloadfilter.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/smarty/sysplugins/smarty_internal_method_unloadfilter.php on line 12

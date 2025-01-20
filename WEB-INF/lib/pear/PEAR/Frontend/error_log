@@ -1,0 +1,25 @@
+[17-Jan-2025 04:58:37 UTC] PHP Fatal error:  Uncaught Error: Class "PEAR" not found in /opt/alt/php82/usr/share/pear/PEAR/Frontend.php:45
+Stack trace:
+#0 /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/PEAR/Frontend/CLI.php(19): require_once()
+#1 {main}
+  thrown in /opt/alt/php82/usr/share/pear/PEAR/Frontend.php on line 45
+[17-Jan-2025 04:59:37 UTC] PHP Fatal error:  Uncaught Error: Class "PEAR" not found in /opt/alt/php82/usr/share/pear/PEAR/Frontend.php:45
+Stack trace:
+#0 /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/PEAR/Frontend/CLI.php(19): require_once()
+#1 {main}
+  thrown in /opt/alt/php82/usr/share/pear/PEAR/Frontend.php on line 45
+[17-Jan-2025 05:02:38 UTC] PHP Fatal error:  Uncaught Error: Class "PEAR" not found in /opt/alt/php82/usr/share/pear/PEAR/Frontend.php:45
+Stack trace:
+#0 /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/PEAR/Frontend/CLI.php(19): require_once()
+#1 {main}
+  thrown in /opt/alt/php82/usr/share/pear/PEAR/Frontend.php on line 45
+[17-Jan-2025 05:09:40 UTC] PHP Fatal error:  Uncaught Error: Class "PEAR" not found in /opt/alt/php82/usr/share/pear/PEAR/Frontend.php:45
+Stack trace:
+#0 /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/PEAR/Frontend/CLI.php(19): require_once()
+#1 {main}
+  thrown in /opt/alt/php82/usr/share/pear/PEAR/Frontend.php on line 45
+[17-Jan-2025 05:24:42 UTC] PHP Fatal error:  Uncaught Error: Class "PEAR" not found in /opt/alt/php82/usr/share/pear/PEAR/Frontend.php:45
+Stack trace:
+#0 /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/PEAR/Frontend/CLI.php(19): require_once()
+#1 {main}
+  thrown in /opt/alt/php82/usr/share/pear/PEAR/Frontend.php on line 45

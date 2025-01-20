@@ -37,12 +37,12 @@ function fillDropdowns() {
   <tr><td><div class="small-screen-form-control-separator"></div></td></tr>
 {/if}
 {if $show_client}
-  <tr class = "small-screen-label"><td><label for="client">{$i18n.label.client}{if $user->isOptionEnabled('client_required')} (*){/if}:</label></td></tr>
+ <!-- <tr class = "small-screen-label"><td><label for="client">{$i18n.label.client}{if $user->isOptionEnabled('client_required')} (*){/if}:</label></td></tr>
   <tr>
     <td class="large-screen-label"><label for="client">{$i18n.label.client}{if $user->isOptionEnabled('client_required')} (*){/if}:</label></td>
     <td class="td-with-input">{$forms.weekTimeForm.client.control}</td>
   </tr>
-  <tr><td><div class="small-screen-form-control-separator"></div></td></tr>
+  <tr><td><div class="small-screen-form-control-separator"></div></td></tr> -->
 {/if}
 {if $show_billable}
   <tr>
@@ -88,12 +88,16 @@ function fillDropdowns() {
 {/if}
 </table>
 <div class="form-control-separator"></div>
-<table class="x-scrollable-table">
+<div>
+<table class="x-scrollable-table" style="display: inline-block;">
   <tr>
     <td>{$forms.weekTimeForm.week_durations.control}</td>
   </tr>
 </table>
-<div class="button-set">{$forms.weekTimeForm.btn_submit.control}</div>
+<div style="display: inline-block; vertical-align: top; margin-top: 38px;">{$forms.weekTimeForm.btn_submit.control}</div>
+</div>
+
+<div class="button-set" style="width:100%; clear:both;">{$forms.weekTimeForm.btn_submit.control}</div>
 {$forms.weekTimeForm.close}
 
 {if $show_week_list}

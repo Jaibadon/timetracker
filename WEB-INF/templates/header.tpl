@@ -27,7 +27,7 @@
 {if $user->custom_logo}
   <img alt="Time Tracker" width="300" height="43" src="{$custom_logo}">
 {else}
-  <a href="https://www.anuko.com/lp/tt_1.htm" target="_blank"><img alt="Anuko Time Tracker" width="300" height="43" src="img/logo.png"></a>
+  <a href="https://www.remote.cadviz.co.nz" target="_blank"><img alt="Cadviz Time Tracker" width="300" height="43" src="img/logo.png"></a>
 {/if}
 </div>
 
@@ -36,7 +36,6 @@
   <table class="top-menu-table">
     <tr>
       <td><a href="site_map.php">{$i18n.label.menu}</a> </td>
-      <td><a href="{constant('HELP_LINK')}">{$i18n.menu.help}</a></td>
     </tr>
   </table>
 </div>
@@ -50,8 +49,6 @@
   <table class="top-menu-table">
     <tr>
       <td><a href="logout.php">{$i18n.menu.logout}</a></td>
-      <td><a href="{constant('FORUM_LINK')}" target="_blank">{$i18n.menu.forum}</a></td>
-      <td><a href="{constant('HELP_LINK')}" target="_blank">{$i18n.menu.help}</a></td>
     </tr>
   </table>
 </div>
@@ -82,8 +79,6 @@
     {if $user->can('manage_features')}
       <td><a href="plugins.php">{$i18n.menu.plugins}</a></td>
     {/if}
-      <td><a href="{constant('FORUM_LINK')}" target="_blank">{$i18n.menu.forum}</a></td>
-      <td><a href="{constant('HELP_LINK')}" target="_blank">{$i18n.menu.help}</a></td>
     </tr>
   </table>
 </div>
@@ -94,7 +89,7 @@
   <table class="top-submenu-table">
     <tr>
     {if $user->exists() && ($user->can('track_own_time') || $user->can('track_time'))}
-      <td><a href="time.php">{$i18n.menu.time}</a></td>
+      <td><a href="week.php">{$i18n.menu.time}</a></td>
       {if $user->isPluginEnabled('pu') && $user->isOptionEnabled('puncher_menu')}
       <td><a href="puncher.php">{$i18n.menu.puncher}</a></td>
       {/if}
@@ -148,8 +143,6 @@
   {if isTrue('MULTIORG_MODE') && constant('AUTH_MODULE') == 'db'}
       <td><a href="register.php">{$i18n.menu.register}</a></td>
   {/if}
-      <td><a href="{constant('FORUM_LINK')}" target="_blank">{$i18n.menu.forum}</a></td>
-      <td><a href="{constant('HELP_LINK')}" target="_blank">{$i18n.menu.help}</a></td>
     </tr>
   </table>
 </div>

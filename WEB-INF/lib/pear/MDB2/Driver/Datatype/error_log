@@ -1,0 +1,25 @@
+[17-Jan-2025 04:58:36 UTC] PHP Warning:  require_once(MDB2/LOB.php): Failed to open stream: No such file or directory in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/MDB2/Driver/Datatype/Common.php on line 47
+[17-Jan-2025 04:58:36 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'MDB2/LOB.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/MDB2/Driver/Datatype/Common.php:47
+Stack trace:
+#0 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/MDB2/Driver/Datatype/Common.php on line 47
+[17-Jan-2025 04:59:38 UTC] PHP Warning:  require_once(MDB2/LOB.php): Failed to open stream: No such file or directory in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/MDB2/Driver/Datatype/Common.php on line 47
+[17-Jan-2025 04:59:38 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'MDB2/LOB.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/MDB2/Driver/Datatype/Common.php:47
+Stack trace:
+#0 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/MDB2/Driver/Datatype/Common.php on line 47
+[17-Jan-2025 05:02:38 UTC] PHP Warning:  require_once(MDB2/LOB.php): Failed to open stream: No such file or directory in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/MDB2/Driver/Datatype/Common.php on line 47
+[17-Jan-2025 05:02:38 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'MDB2/LOB.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/MDB2/Driver/Datatype/Common.php:47
+Stack trace:
+#0 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/MDB2/Driver/Datatype/Common.php on line 47
+[17-Jan-2025 05:09:40 UTC] PHP Warning:  require_once(MDB2/LOB.php): Failed to open stream: No such file or directory in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/MDB2/Driver/Datatype/Common.php on line 47
+[17-Jan-2025 05:09:40 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'MDB2/LOB.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/MDB2/Driver/Datatype/Common.php:47
+Stack trace:
+#0 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/MDB2/Driver/Datatype/Common.php on line 47
+[17-Jan-2025 05:24:42 UTC] PHP Warning:  require_once(MDB2/LOB.php): Failed to open stream: No such file or directory in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/MDB2/Driver/Datatype/Common.php on line 47
+[17-Jan-2025 05:24:42 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'MDB2/LOB.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/MDB2/Driver/Datatype/Common.php:47
+Stack trace:
+#0 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/MDB2/Driver/Datatype/Common.php on line 47

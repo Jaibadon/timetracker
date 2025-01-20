@@ -1,0 +1,16 @@
+[17-Jan-2025 05:20:44 UTC] PHP Fatal error:  Uncaught Error: Class "Mail" not found in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/Mail/mail.php:51
+Stack trace:
+#0 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/Mail/mail.php on line 51
+[17-Jan-2025 05:31:10 UTC] PHP Fatal error:  Uncaught Error: Class "Mail" not found in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/Mail/mail.php:51
+Stack trace:
+#0 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/Mail/mail.php on line 51
+[17-Jan-2025 05:31:59 UTC] PHP Fatal error:  Uncaught Error: Class "Mail" not found in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/Mail/mail.php:51
+Stack trace:
+#0 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/Mail/mail.php on line 51
+[17-Jan-2025 05:32:48 UTC] PHP Fatal error:  Uncaught Error: Class "Mail" not found in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/Mail/mail.php:51
+Stack trace:
+#0 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/Mail/mail.php on line 51

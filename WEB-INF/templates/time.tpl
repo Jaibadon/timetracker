@@ -32,12 +32,14 @@ function handleStop(buttonElement) {
   <tr><td><div class="small-screen-form-control-separator"></div></td></tr>
 {/if}
 {if $show_client}
+<!--
   <tr class = "small-screen-label"><td><label for="client">{$i18n.label.client}{if $user->isOptionEnabled('client_required')} (*){/if}:</label></td></tr>
   <tr>
     <td class="large-screen-label"><label for="client">{$i18n.label.client}{if $user->isOptionEnabled('client_required')} (*){/if}:</label></td>
     <td class="td-with-input">{$forms.timeRecordForm.client.control}</td>
   </tr>
   <tr><td><div class="small-screen-form-control-separator"></div></td></tr>
+  -->
 {/if}
 {if $show_billable}
   <tr>

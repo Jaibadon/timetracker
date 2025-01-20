@@ -1,0 +1,60 @@
+[17-Jan-2025 04:58:37 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function error_handler(), 4 passed and exactly 5 expected in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/scripts/pearcmd.php:446
+Stack trace:
+#0 [internal function]: error_handler()
+#1 /opt/alt/php82/usr/share/pear/PEAR/XMLParser.php(152): trim()
+#2 /opt/alt/php82/usr/share/pear/PEAR/XMLParser.php(166): PEAR_XMLParser->postProcess()
+#3 [internal function]: PEAR_XMLParser->endHandler()
+#4 /opt/alt/php82/usr/share/pear/PEAR/XMLParser.php(102): xml_parse()
+#5 /opt/alt/php82/usr/share/pear/PEAR/Command.php(247): PEAR_XMLParser->parse()
+#6 /opt/alt/php82/usr/share/pear/PEAR/Command.php(302): PEAR_Command::registerCommands()
+#7 /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/scripts/pearcmd.php(54): PEAR_Command::getCommands()
+#8 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/scripts/pearcmd.php on line 446
+[17-Jan-2025 04:59:38 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function error_handler(), 4 passed and exactly 5 expected in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/scripts/pearcmd.php:446
+Stack trace:
+#0 [internal function]: error_handler()
+#1 /opt/alt/php82/usr/share/pear/PEAR/XMLParser.php(152): trim()
+#2 /opt/alt/php82/usr/share/pear/PEAR/XMLParser.php(166): PEAR_XMLParser->postProcess()
+#3 [internal function]: PEAR_XMLParser->endHandler()
+#4 /opt/alt/php82/usr/share/pear/PEAR/XMLParser.php(102): xml_parse()
+#5 /opt/alt/php82/usr/share/pear/PEAR/Command.php(247): PEAR_XMLParser->parse()
+#6 /opt/alt/php82/usr/share/pear/PEAR/Command.php(302): PEAR_Command::registerCommands()
+#7 /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/scripts/pearcmd.php(54): PEAR_Command::getCommands()
+#8 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/scripts/pearcmd.php on line 446
+[17-Jan-2025 05:02:39 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function error_handler(), 4 passed and exactly 5 expected in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/scripts/pearcmd.php:446
+Stack trace:
+#0 [internal function]: error_handler()
+#1 /opt/alt/php82/usr/share/pear/PEAR/XMLParser.php(152): trim()
+#2 /opt/alt/php82/usr/share/pear/PEAR/XMLParser.php(166): PEAR_XMLParser->postProcess()
+#3 [internal function]: PEAR_XMLParser->endHandler()
+#4 /opt/alt/php82/usr/share/pear/PEAR/XMLParser.php(102): xml_parse()
+#5 /opt/alt/php82/usr/share/pear/PEAR/Command.php(247): PEAR_XMLParser->parse()
+#6 /opt/alt/php82/usr/share/pear/PEAR/Command.php(302): PEAR_Command::registerCommands()
+#7 /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/scripts/pearcmd.php(54): PEAR_Command::getCommands()
+#8 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/scripts/pearcmd.php on line 446
+[17-Jan-2025 05:09:40 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function error_handler(), 4 passed and exactly 5 expected in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/scripts/pearcmd.php:446
+Stack trace:
+#0 [internal function]: error_handler()
+#1 /opt/alt/php82/usr/share/pear/PEAR/XMLParser.php(152): trim()
+#2 /opt/alt/php82/usr/share/pear/PEAR/XMLParser.php(166): PEAR_XMLParser->postProcess()
+#3 [internal function]: PEAR_XMLParser->endHandler()
+#4 /opt/alt/php82/usr/share/pear/PEAR/XMLParser.php(102): xml_parse()
+#5 /opt/alt/php82/usr/share/pear/PEAR/Command.php(247): PEAR_XMLParser->parse()
+#6 /opt/alt/php82/usr/share/pear/PEAR/Command.php(302): PEAR_Command::registerCommands()
+#7 /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/scripts/pearcmd.php(54): PEAR_Command::getCommands()
+#8 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/scripts/pearcmd.php on line 446
+[17-Jan-2025 05:24:42 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function error_handler(), 4 passed and exactly 5 expected in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/scripts/pearcmd.php:446
+Stack trace:
+#0 [internal function]: error_handler()
+#1 /opt/alt/php82/usr/share/pear/PEAR/XMLParser.php(152): trim()
+#2 /opt/alt/php82/usr/share/pear/PEAR/XMLParser.php(166): PEAR_XMLParser->postProcess()
+#3 [internal function]: PEAR_XMLParser->endHandler()
+#4 /opt/alt/php82/usr/share/pear/PEAR/XMLParser.php(102): xml_parse()
+#5 /opt/alt/php82/usr/share/pear/PEAR/Command.php(247): PEAR_XMLParser->parse()
+#6 /opt/alt/php82/usr/share/pear/PEAR/Command.php(302): PEAR_Command::registerCommands()
+#7 /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/scripts/pearcmd.php(54): PEAR_Command::getCommands()
+#8 {main}
+  thrown in /home/sys_5e4089532_6/public_html/remote.cadviz.co.nz/timetracker/WEB-INF/lib/pear/scripts/pearcmd.php on line 446

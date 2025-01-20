@@ -255,7 +255,7 @@ $project_list = $client_list = array();
 if ($showProject) {
   // Dropdown for projects assigned to user.
   $options['include_templates'] = $user->isPluginEnabled('tp') && $config->getDefinedValue('bind_templates_with_projects');
-  $project_list = $user->getAssignedProjects($options);
+  $project_list = $user->getAssignedProjects();
   $form->addInput(array('type'=>'combobox',
     'onchange'=>'fillTaskDropdown(this.value);fillTemplateDropdown(this.value);prepopulateNote();',
     'name'=>'project',
