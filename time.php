@@ -361,7 +361,13 @@ $form->addInput(array('type'=>'hidden','name'=>'browser_today','value'=>'')); //
 
 // Submit button.
 $form->addInput(array('type'=>'submit','name'=>'btn_submit','onclick'=>'browser_today.value=get_date()','value'=>$i18n->get('button.submit')));
+function debug_to_consolee($data) {
+  $output = $data;
+  if (is_array($output))
+      $output = implode(',', $output);
 
+  echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+}
 if ($request->isPost()) {
   if ($request->getParameter('btn_submit')) {
     // Submit button clicked.
@@ -441,6 +447,7 @@ if ($request->isPost()) {
 
     // Insert record.
     if ($err->no()) {
+      
       $id = ttTimeHelper::insert(array(
         'date' => $cl_date,
         'client' => $cl_client,
@@ -451,9 +458,10 @@ if ($request->isPost()) {
         'duration' => $cl_duration,
         'note' => $cl_note,
         'billable' => $cl_billable));
-
+        debug_to_consolee("test");
       // Insert time custom fields if we have them.
       $result = true;
+      
       if ($id && isset($custom_fields) && $custom_fields->timeFields) {
         $result = $custom_fields->insertTimeFields($id, $timeCustomFields);
       }
@@ -474,6 +482,7 @@ if ($request->isPost()) {
       $err->add($i18n->get('error.db'));
     }
   } elseif ($request->getParameter('btn_stop')) {
+    
     // Stop button pressed to finish an uncompleted record.
     $record_id = $request->getParameter('record_id');
     $record = ttTimeHelper::getRecord($record_id);

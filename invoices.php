@@ -33,6 +33,7 @@ $form = new Form('invoicesForm');
 $sort_options['name'] = $i18n->get('label.invoice');
 $sort_options['client'] = $i18n->get('label.client');
 $sort_options['date'] = $i18n->get('label.date');
+$sort_options['Subtotal'] = "Subtotal";
 
 $form->addInput(array('type'=>'combobox',
   'name'=>'sort_option_1',

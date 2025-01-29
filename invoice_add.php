@@ -22,7 +22,7 @@ if (!$user->isPluginEnabled('iv')) {
 $cl_date = $cl_client = $cl_project = $cl_number = $cl_start = $cl_finish = null;
 if ($request->isPost()) {
   $cl_date = $request->getParameter('date');
-  $cl_client = (int)$request->getParameter('client');
+  $duedateselect = (int)$request->getParameter('client');
   $cl_project = $request->getParameter('project');
   $cl_number = trim($request->getParameter('number'));
   $cl_start = $request->getParameter('start');
@@ -32,17 +32,48 @@ if ($request->isPost()) {
 $form = new Form('invoiceForm');
 $form->addInput(array('type'=>'datefield','name'=>'date','size'=>'20','value'=>$cl_date));
 
-// Dropdown for clients if the clients plugin is enabled.
-if ($user->isPluginEnabled('cl')) {
-  $clients = ttGroupHelper::getActiveClients();
-  $form->addInput(array('type'=>'combobox','name'=>'client','data'=>$clients,'datakeys'=>array('id','name'),'value'=>$cl_client,'empty'=>array(''=>$i18n->get('dropdown.select'))));
+function debug_to_console($data) {
+  $file = 'debug.log';
+  $timestampp = date('Y-m-d H:i:s');
+  
+  $output = $data;
+  if (is_array($output)){
+      $output = implode(',', $output);
+  }
+  $formattedMessage = "[{". $timestampp ."}] {".$output."}\n";
+
+  file_put_contents($file, $formattedMessage, FILE_APPEND);
+
 }
+
 // Dropdown for projects.
 $show_project = MODE_PROJECTS == $user->getTrackingMode() || MODE_PROJECTS_AND_TASKS == $user->getTrackingMode();
 if ($show_project) {
   $projects = ttGroupHelper::getActiveProjects();
-  $form->addInput(array('type'=>'combobox','name'=>'project','data'=>$projects,'datakeys'=>array('id','name'),'value'=>$cl_project,'empty'=>array(''=>$i18n->get('dropdown.all'))));
+  $form->addInput(array('type'=>'combobox', 'onchange="updatePhp()"','name'=>'project','data'=>$projects,'datakeys'=>array('id','name'),'value'=>$cl_project,'empty'=>array(''=>$i18n->get('dropdown.all'))));
 }
+
+$duedatetype = array(
+  0 => array(
+      'id' => 1,
+      'name' => '20th Next Month'
+  ),
+  1 => array(
+      'id' => 2,
+      'name' => '7 days from today'
+  ),
+  2 => array(
+    'id' => 3,
+    'name' => 'Today'
+)
+);
+
+
+// Dropdown for clients if the clients plugin is enabled.
+
+ // debug_to_console($duedatetype);
+  $form->addInput(array('type'=>'combobox','name'=>'client','data'=>$duedatetype,'datakeys'=>array('id','name'),'value'=>$duedateselect,'empty'=>array(''=>$i18n->get('dropdown.select'))));
+
 $form->addInput(array('type'=>'text','maxlength'=>'100','name'=>'number','value'=>$cl_number));
 $form->addInput(array('type'=>'datefield','maxlength'=>'20','name'=>'start','value'=>$cl_start));
 $form->addInput(array('type'=>'datefield','maxlength'=>'20','name'=>'finish','value'=>$cl_finish));
@@ -52,11 +83,18 @@ if ($request->isPost()) {
   // Validate user input.
   if (!ttValidString($cl_number)) $err->add($i18n->get('error.field'), $i18n->get('form.invoice.number'));
   if (!ttValidDate($cl_date)) $err->add($i18n->get('error.field'), $i18n->get('label.date'));
-  if (!$cl_client) $err->add($i18n->get('error.client'));
+  if (!$duedateselect) $err->add("no due date selected");
   if (!ttValidDate($cl_start)) $err->add($i18n->get('error.field'), $i18n->get('label.start_date'));
   if (!ttValidDate($cl_finish)) $err->add($i18n->get('error.field'), $i18n->get('label.end_date'));
 
-  $fields = array('date'=>$cl_date,'name'=>$cl_number,'client_id'=>$cl_client,'project_id'=>$cl_project,'start_date'=>$cl_start,'end_date'=>$cl_finish);
+  $cl_client = ttGroupHelper::getActiveClients(false, $cl_project);
+
+
+ // $duedateselect = $duedateselect; // 'paymentoption'=>$duedateselect,
+  debug_to_console("Riggas");
+  debug_to_console($duedateselect);
+
+  $fields = array('paymentoption'=>$duedateselect, 'date'=>$cl_date,'name'=>$cl_number,'client_id'=>$cl_client,'project_id'=>$cl_project,'start_date'=>$cl_start,'end_date'=>$cl_finish);
   if ($err->no()) {
     if (ttInvoiceHelper::getInvoiceByName($cl_number))
       $err->add($i18n->get('error.invoice_exists'));
@@ -67,8 +105,10 @@ if ($request->isPost()) {
 
   if ($err->no()) {
     // Now we can go ahead and create our invoice.
+   
     if (ttInvoiceHelper::createInvoice($fields)) {
-      header('Location: invoices.php');
+      //header('Location: invoices.php');
+
       exit();
     } else {
       $err->add($i18n->get('error.db'));

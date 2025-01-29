@@ -23,7 +23,7 @@ if (!$invoice) {
   exit();
 }
 // End of access checks.
-
+$invoice_due = "tetse"
 $uc = new ttUserConfig();
 
 if ($request->isPost()) {
@@ -71,6 +71,7 @@ if ($request->isPost()) {
       $mailer->setReceiverBCC($user->bcc_email);
     $mailer->setMailMode(MAIL_MODE);
     if ($mailer->send($cl_subject, $body))
+      ttInvoiceHelper::markSent($cl_invoice_id);
       $msg->add($i18n->get('form.mail.invoice_sent'));
     else
       $err->add($i18n->get('error.mail_send'));

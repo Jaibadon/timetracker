@@ -128,7 +128,7 @@ if ($request->isPost()) {
     } elseif ($user->isClient()) {
       header('Location: reports.php');
     } else {
-      header('Location: time.php');
+      header('Location: week.php');
     }
     exit();
   }

@@ -425,10 +425,11 @@ class ttTimeHelper {
     $client = $fields['client'];
     $project = $fields['project'];
     $task = $fields['task'];
-    $invoice = isset($fields['invoice']) ? $fields['invoice'] : null;
+    $invoice = isset($fields['invoice']) ? $fields['invoice'] : 0;
     $note = $fields['note'];
     $billable = $fields['billable'];
-    $paid = isset($fields['paid']) ? $fields['paid'] : null;
+    $paid = isset($fields['paid']) ? $fields['paid'] : 0;
+    $rate = isset($fields['rate']) ? $fields['rate'] : 0;
 
     $start = ttTimeHelper::to24HourFormat($start);
     if ($finish) {
@@ -441,8 +442,8 @@ class ttTimeHelper {
     if (!$billable) $billable = 0;
     if (!$paid) $paid = 0;
     if (!is_null($duration)) {
-      $sql = "insert into tt_log (user_id, group_id, org_id, date, duration, client_id, project_id, task_id, invoice_id, comment, billable, paid, created, created_ip, created_by) ".
-        "values ($user_id, $group_id, $org_id, ".$mdb2->quote($date).", '$duration', ".$mdb2->quote($client).", ".$mdb2->quote($project).", ".$mdb2->quote($task).", ".$mdb2->quote($invoice).", ".$mdb2->quote($note).", $billable, $paid $created_v)";
+      $sql = "insert into tt_log (user_id, group_id, org_id, date, duration, client_id, project_id, task_id, invoice_id, comment, billable, paid, created, created_ip, created_by, rate) ".
+        "values ($user_id, $group_id, $org_id, ".$mdb2->quote($date).", '$duration', ".$mdb2->quote($client).", ".$mdb2->quote($project).", ".$mdb2->quote($task).", ".$mdb2->quote($invoice).", ".$mdb2->quote($note).", $billable, $paid $created_v, $rate)";
       $affected = $mdb2->exec($sql);
       if (is_a($affected, 'PEAR_Error'))
         return false;
@@ -450,8 +451,8 @@ class ttTimeHelper {
       $duration = ttTimeHelper::toDuration($start, $finish);
       if ($duration === false) $duration = 0;
 
-      $sql = "insert into tt_log (user_id, group_id, org_id, date, start, duration, client_id, project_id, task_id, invoice_id, comment, billable, paid, created, created_ip, created_by) ".
-        "values ($user_id, $group_id, $org_id, ".$mdb2->quote($date).", '$start', '$duration', ".$mdb2->quote($client).", ".$mdb2->quote($project).", ".$mdb2->quote($task).", ".$mdb2->quote($invoice).", ".$mdb2->quote($note).", $billable, $paid $created_v)";
+      $sql = "insert into tt_log (user_id, group_id, org_id, date, start, duration, client_id, project_id, task_id, invoice_id, comment, billable, paid, created, created_ip, created_by, rate) ".
+        "values ($user_id, $group_id, $org_id, ".$mdb2->quote($date).", '$start', '$duration', ".$mdb2->quote($client).", ".$mdb2->quote($project).", ".$mdb2->quote($task).", ".$mdb2->quote($invoice).", ".$mdb2->quote($note).", $billable, $paid $created_v, $rate)";
       $affected = $mdb2->exec($sql);
       if (is_a($affected, 'PEAR_Error'))
         return false;
@@ -478,6 +479,7 @@ class ttTimeHelper {
     $task = $fields['task'];
     $start = $fields['start'];
     $finish = $fields['finish'];
+    
     $duration = isset($fields['duration']) ? $fields['duration'] : null;
     if ($duration) {
       $minutes = ttTimeHelper::postedDurationToMinutes($duration);
@@ -498,9 +500,9 @@ class ttTimeHelper {
     $start = ttTimeHelper::to24HourFormat($start);
     $finish = ttTimeHelper::to24HourFormat($finish);
     if ('00:00' == $finish) $finish = '24:00';
-    
-    if ($start) $duration = null;
 
+    if ($start) $duration = null;
+    
     if (!is_null($duration)) {
       $sql = "UPDATE tt_log set start = NULL, duration = '$duration', client_id = ".$mdb2->quote($client).", project_id = ".$mdb2->quote($project).", task_id = ".$mdb2->quote($task).", ".
         "comment = ".$mdb2->quote($note)."$billable_part $paid_part $modified_part, date = '$date' WHERE id = $id and user_id = $user_id and group_id = $group_id and org_id = $org_id";

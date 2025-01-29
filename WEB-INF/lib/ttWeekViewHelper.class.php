@@ -623,6 +623,22 @@ class ttWeekViewHelper {
     return true;
   }
 
+  static function modifyProjectFromWeekView($fields, $err) {
+    global $i18n;
+    global $user;
+
+    $mdb2 = getConnection();
+    $project_id = $fields['project_id'];
+    $tt_log_id = $fields['tt_log_id'];
+    $user_id = $user->getUser();
+    $sql = "update tt_log set project_id = '$project_id' where id = $tt_log_id and user_id = $user_id";
+    $affected = $mdb2->exec($sql);
+    if (is_a($affected, 'PEAR_Error'))
+      return false;
+
+    return true;
+  }
+
   // canModify - determines if an  already existing tt_log record
   // can be modified with a new user-provided duration.
   static function canModify($tt_log_id, $new_duration, $err) {

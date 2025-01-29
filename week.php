@@ -12,6 +12,8 @@ import('ttGroupHelper');
 import('ttWeekViewHelper');
 import('ttClientHelper');
 import('ttTimeHelper');
+import('ttInvoiceHelper');
+import('ttProjectHelper');
 import('ttDate');
 
 // Access checks.
@@ -79,6 +81,7 @@ $showStart = TYPE_START_FINISH == $recordType || TYPE_ALL == $recordType;
 $showFiles = $user->isPluginEnabled('at');
 $showRecordCustomFields = $user->isOptionEnabled('record_custom_fields');
 
+
 // Initialize and store date in session.
 $cl_date = $request->getParameter('date', @$_SESSION['date']);
 $selected_date = new ttDate($cl_date);
@@ -122,14 +125,7 @@ if ($user->isPluginEnabled('mq')){
 
 // Initialize variables.
 $cl_billable = 1;
-if ($showBillable) {
-  if ($request->isPost()) {
-    $cl_billable = $request->getParameter('billable');
-    $_SESSION['billable'] = (int) $cl_billable;
-  } else
-    if (isset($_SESSION['billable']))
-      $cl_billable = $_SESSION['billable'];
-}
+
 $cl_client = $request->getParameter('client', ($request->isPost() ? null : @$_SESSION['client']));
 $_SESSION['client'] = $cl_client;
 $cl_project = $request->getParameter('project', ($request->isPost() ? null : @$_SESSION['project']));
@@ -198,14 +194,32 @@ class LabelCellRenderer extends DefaultCellRenderer {
     $showNotes = $user->isOptionEnabled('week_notes');
 
     $this->setOptions(array('width'=>200,'valign'=>'middle'));
-
+    $projectrow = false;
     // Special handling for a new week entry (row 0, or 0 and 1 if we show notes).
     if (0 == $row) {
       $this->setOptions(array('style'=>'text-align: center; font-weight: bold; vertical-align: top;'));
+      $projectList = ttProjectHelper::getProjects(false); // Assume this function returns an array of projects with IDs and names.
+
+      $value = '<p style = "text-align: center; font-weight: bold; vertical-align: top;"> New Entry </p>';
+      $value .= '<select id="project" name="project" style="width: 200px;" onchange="fillTaskDropdown(this.value);">';
+
+      $value .= '<option value="">' . '--select--' . '</option>'; // Empty option
+
+      foreach ($projectList as $project) {
+          $selectedAttr = ($project['id'] == $cl_project) ? ' selected' : '';
+          $value .= '<option value="' . htmlspecialchars($project['id']) . '"' . $selectedAttr . '>' . htmlspecialchars($project['name']) . '</option>';
+      }
+
+      $value .= '</select>';
+      $projectrow = true;
     } else if ($showNotes && (1 == $row)) {
       $this->setOptions(array('style'=>'text-align: right; vertical-align: top;'));
+
+      $projectrow = true;
+      
     } else if ($showNotes && (0 != $row % 2)) {
       $this->setOptions(array('style'=>'text-align: right;'));
+      $projectrow = true;
     }
     // Special handling for not billable entries.
     $ignoreRow = $showNotes ? 1 : 0;
@@ -218,9 +232,53 @@ class LabelCellRenderer extends DefaultCellRenderer {
         }
       }
     }
-    $this->setValue(htmlspecialchars($value)); // This escapes HTML for output.
+
+    //cleanup upupupup
+
+    $projectList = ttProjectHelper::getProjects(false);
+    /*  
+    $form->addInput(array(
+      'type' => 'combobox',
+      'name' => 'project_' . $row,
+      'value' => $value,
+      'data' => $projectList,
+      'datakeys' => array('id', 'name'),
+      'style' => 'width: 200px;',
+  )); */
+    $dropdownHtml = '<select id="project_' . $row . '" name="project_' . $row . '" style="width: 200px;">';
+
+    foreach ($projectList as $project) {
+      $selectedAttr = ($project['name'] === $value) ? ' selected' : '';
+      $dropdownHtml .= '<option value="' . htmlspecialchars($project['id']) . '"' . $selectedAttr . '>' . htmlspecialchars($project['name']) . '</option>';
+    }
+
+    $dropdownHtml .= '</select>';
+
+    // Set the dropdown as the cell content
+    if(!$projectrow){
+      $this->setValue($dropdownHtml);
+    }else{
+      $this->setValue($value);
+    }
+     // This prolly should escape HTML for output.
+    
     return $this->toString();
   }
+}
+
+
+function debug_to_console($data) {
+  $file = 'debug.log';
+  $timestampp = date('Y-m-d H:i:s');
+  
+  $output = $data;
+  if (is_array($output)){
+      $output = implode(',', $output);
+  }
+  $formattedMessage = "[{". $timestampp ."}] {".$output."}\n";
+
+  file_put_contents($file, $formattedMessage, FILE_APPEND);
+
 }
 
 // Define rendering class for a single cell for a time or a comment entry in week view table.
@@ -235,17 +293,35 @@ class WeekViewCellRenderer extends DefaultCellRenderer {
     global $lockedDays;
     if ($lockedDays[$column])
       $field->setEnabled(false);
+
+
+    $row_id = $table->getValueAt($row, $column)['tt_log_id'];
+
+    $invoiceNumber = ttInvoiceHelper::getInvoiceId($row_id);
+    
     $field->setFormName($table->getFormName());
-    $field->setStyle('width: 60px;'); // TODO: need to style everything properly, eventually.
+    $field->setStyle('width: 90px;'); // TODO: need to style everything properly, eventually.
     // Provide visual separation for new entry row.
     $rowToSeparate = $showNotes ? 1 : 0;
     if ($rowToSeparate == $row) {
-      $field->setStyle('width: 60px; margin-bottom: 40px');
+      $field->setStyle('width: 90px; margin-bottom: 40px');
+      if ($invoiceNumber != 0 && $invoiceNumber != NULL) {
+        $field->setEnabled(false);
+        $field->setStyle('background-color: grey; width: 90px; margin-bottom: 40px');
+     }
     }
+
+    if ($invoiceNumber != 0 && $invoiceNumber != NULL) {
+      $field->setEnabled(false);
+      $field->setStyle('background-color: grey; width: 90px;');
+   }
+
+
     if ($showNotes) {
       if (0 == $row % 2) {
         $field->setValue($table->getValueAt($row,$column)['duration']); // Duration for even rows.
       } else {
+        if($field)
         $field->setValue($table->getValueAt($row,$column)['note']);     // Comment for odd rows.
         $field->setTitle(htmlspecialchars($table->getValueAt($row,$column)['note'])); // Tooltip to help view the entire comment.
       }
@@ -253,6 +329,7 @@ class WeekViewCellRenderer extends DefaultCellRenderer {
       $field->setValue($table->getValueAt($row,$column)['duration']);
       // $field->setTitle($table->getValueAt($row,$column)['note']); // Tooltip to see comment. TODO - value not available.
     }
+
     // Disable control when time entry mode is TYPE_START_FINISH and there is no value in control
     // because we can't supply start and finish times in week view - there are no fields for them.
     if (!$field->getValue() && TYPE_START_FINISH == $user->getRecordType()) {
@@ -349,6 +426,7 @@ if (isset($custom_fields) && $custom_fields->timeFields) {
 $project_list = $client_list = array();
 if ($showProject) {
   // Dropdown for projects assigned to user.
+  /*
   $project_list = $user->getAssignedProjects();
   $form->addInput(array('type'=>'combobox',
     'onchange'=>'fillTaskDropdown(this.value);',
@@ -357,7 +435,7 @@ if ($showProject) {
     'data'=>$project_list,
     'datakeys'=>array('id','name'),
     'empty'=>array(''=>$i18n->get('dropdown.select'))));
-  $largeScreenCalendarRowSpan += 2;
+  $largeScreenCalendarRowSpan += 2;*/
 
   // Dropdown for clients if the clients plugin is enabled.
   if ($showClient) {
@@ -458,6 +536,7 @@ if ($request->isPost()) {
       // Iterate through existing rows.
       foreach ($dataArray as $row) {
         // Iterate through days.
+    
         foreach ($dayHeaders as $key => $dayHeader) {
           // Do not process locked days.
           if ($lockedDays[$key]) continue;
@@ -465,9 +544,39 @@ if ($request->isPost()) {
           $control_id = $rowNumber.'_'.$dayHeader;
 
           // Handle durations and comments in separate blocks of code.
-          if (!$showWeekNotes || (0 == $rowNumber % 2)) {
+          if (0 == $rowNumber % 2) {
             // Handle durations row here.
+            $projectControlId = 'project_' . ($rowNumber + 2);
+            $selectedProjectId = $request->getParameter($projectControlId);
+            
+            
+          if ($err->no()) {
+           // $existingProjectId = $dataArray[$rowNumber]['project_id']; // Existing project ID for the row.
+    
+          //  if ($selectedProjectId !== $existingProjectId) {
+                // Update the project ID for the row.
+                $fields = array(
+                    'project_id' => $selectedProjectId,
+                );
+                
+               $fields['tt_log_id'] = $dataArray[($rowNumber + 2)][$dayHeader]['tt_log_id'];
 
+              $nigga = $dataArray[($rowNumber + 2)][$dayHeader]['tt_log_id'];
+              
+                if($nigga){
+                  $result = ttWeekViewHelper::modifyProjectFromWeekView($fields, $err);
+                  if (!$result) {
+                    $err->add($nigga . 'bozo');
+                    break; // Stop further processing on error.
+                }
+                }else{
+                  debug_to_console('rah');
+                }
+               
+                
+                
+           // }
+          }
             // Obtain existing and posted durations.
             $postedDuration = $request->getParameter($control_id);
             $existingDuration = $dataArray[$rowNumber][$dayHeader]['duration'];
@@ -493,7 +602,7 @@ if ($request->isPost()) {
                 // Special handling for row 0, a new entry. Need to construct new row_id.
                 $record = array();
                 $record['client_id'] = $cl_client;
-                $record['billable'] = $cl_billable ? '1' : '0';
+                $record['billable'] = 1;
                 $record['project_id'] = $cl_project;
                 $record['task_id'] = $cl_task;
                 if (isset($custom_fields) && $custom_fields->timeFields) {
@@ -517,6 +626,7 @@ if ($request->isPost()) {
               $fields['start_date'] = $startDate->toString(); // To be able to determine date for the entry using $dayHeader.
               $fields['duration'] = $postedDuration;
               $fields['browser_today'] = $request->getParameter('browser_today', null);
+              debug_to_console('here');
               if ($showWeekNotes) {
                 // Take note value from the control below duration.
                 $noteRowNumber = $rowNumber + 1;
@@ -529,9 +639,11 @@ if ($request->isPost()) {
             } elseif ($postedDuration == null) {
               // Delete an already existing record here.
               $result = ttTimeHelper::delete($dataArray[$rowNumber][$dayHeader]['tt_log_id']);
+              debug_to_console('here');
             } else {
               $fields = array();
               $fields['tt_log_id'] = $dataArray[$rowNumber][$dayHeader]['tt_log_id'];
+              debug_to_console($fields['tt_log_id']);
               $fields['duration'] = $postedDuration;
               $result = ttWeekViewHelper::modifyDurationFromWeekView($fields, $err);
             }
@@ -539,7 +651,7 @@ if ($request->isPost()) {
 
           } else if ($showWeekNotes) {
             // Handle commments row here.
-
+            
             // Obtain existing and posted comments.
             $postedComment = $request->getParameter($control_id);
             $existingComment = $dataArray[$rowNumber][$dayHeader]['note'];
@@ -549,15 +661,16 @@ if ($request->isPost()) {
               $result = false; break; // Break out. Stop any further processing.
             }
             // Do not process if value has not changed.
-            if ($postedComment == $existingComment)
+          /*  if ($postedComment == $existingComment)
               continue;
-
+*/
             // Posted value is different.
             // TODO: handle new entries separately in the durations block above.
 
             // Here, only update the comment on an already existing record.
             $fields = array();
             $fields['tt_log_id'] = $dataArray[$rowNumber][$dayHeader]['tt_log_id'];
+            debug_to_console('here');
             if ($fields['tt_log_id']) {
               $fields['comment'] = $postedComment;
               $result = ttWeekViewHelper::modifyCommentFromWeekView($fields);
@@ -576,11 +689,16 @@ if ($request->isPost()) {
   }
 } // isPost
 
+function timeToFloat($time) {
+  list($hours, $minutes) = explode(':', $time);
+  return $hours + ($minutes / 60);
+}
+
 $week_total = ttTimeHelper::getTimeForWeek($selected_date);
 
 $smarty->assign('large_screen_calendar_row_span', $largeScreenCalendarRowSpan);
 $smarty->assign('selected_date', $selected_date);
-$smarty->assign('week_total', $week_total);
+$smarty->assign('week_total', timeToFloat($week_total));
 $smarty->assign('client_list', $client_list);
 $smarty->assign('project_list', $project_list);
 $smarty->assign('task_list', $task_list);

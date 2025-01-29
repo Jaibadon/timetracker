@@ -113,10 +113,10 @@ function handleStop(buttonElement) {
   </tr>
   <tr><td><div class="small-screen-form-control-separator"></div></td></tr>
 {/if}
-  <tr class = "small-screen-label"><td><label for="note">{$i18n.label.note}:</label></td></tr>
+  <tr class = "small-screen-label"><td><label for="note">Task:</label></td></tr>
   <tr>
-    <td class="large-screen-label"><label for="note">{$i18n.label.note}:</label></td>
-    <td colspan="2">{$forms.timeRecordForm.note.control}</td>
+    <td class="large-screen-label"><label for="note">Task:</label></td>
+    <td colspan="1">{$forms.timeRecordForm.note.control}</td>
   </tr>
   <tr><td><div class="small-screen-form-control-separator"></div></td></tr>
   <tr><td colspan="3">{$forms.timeRecordForm.btn_submit.control}</td>

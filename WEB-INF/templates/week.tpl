@@ -16,6 +16,33 @@ function fillDropdowns() {
 
   fillTaskDropdown(document.weekTimeForm.project.value);
 }
+
+  function timeStringToFloat(time) {
+    var hoursMinutes = time.split(/[.:]/);
+    var hours = parseInt(hoursMinutes[0], 10);
+    var minutes = hoursMinutes[1] ? parseInt(hoursMinutes[1], 10) : 0;
+    return hours + minutes / 60;
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll('input').forEach(function(input) { // Select all input elements
+      var idPattern = /^(\d+)_/; // Matches IDs starting with a number followed by "_"
+      var match = input.id.match(idPattern);
+
+      if (match) {
+        var firstNumber = parseInt(match[1], 10);
+
+        if (firstNumber % 2 === 0) { // Check if the first number is even
+          var timeText = input.value.trim();
+
+          if (timeText.match(/^\d+:\d+$/)) { // Ensure it's a time format
+            input.value = timeStringToFloat(timeText);
+          }
+        }
+      }
+    });
+  });
+
 </script>
 
 {if $show_navigation}
@@ -46,8 +73,8 @@ function fillDropdowns() {
 {/if}
 {if $show_billable}
   <tr>
-    <td class = "large-screen-label">&nbsp;</td>
-    <td><label class="checkbox-label">{$forms.weekTimeForm.billable.control}{$i18n.form.time.billable}</label></td>
+  <!--   <td class = "large-screen-label">&nbsp;</td> -->
+  <!--  <td><label class="checkbox-label">{$forms.weekTimeForm.billable.control}{$i18n.form.time.billable}</label></td> -->
   </tr>
   <tr><td><div class="small-screen-form-control-separator"></div></td></tr>
 {/if}
@@ -63,11 +90,11 @@ function fillDropdowns() {
   {/foreach}
 {/if}
 {if $show_project}
-  <tr class = "small-screen-label"><td><label for="project">{$i18n.label.project} (*):</label></td></tr>
-  <tr>
-    <td class="large-screen-label"><label for="project">{$i18n.label.project} (*):</label></td>
-    <td class="td-with-input">{$forms.weekTimeForm.project.control}</td>
-  </tr>
+  <!-- <tr class = "small-screen-label"><td><label for="project">{$i18n.label.project} (*):</label></td></tr>-->
+ <!--  <tr>-->
+   <!--  <td class="large-screen-label"><label for="project">{$i18n.label.project} (*):</label></td>-->
+  <!--   <td class="td-with-input">{$forms.weekTimeForm.project.control}</td>-->
+  <!-- </tr> -->
   <tr><td><div class="small-screen-form-control-separator"></div></td></tr>
 {/if}
 {if $show_task}
@@ -79,9 +106,9 @@ function fillDropdowns() {
   <tr><td><div class="small-screen-form-control-separator"></div></td></tr>
 {/if}
 {if $show_week_note}
-  <tr class = "small-screen-label"><td><label for="comment">{$i18n.label.week_note}:</label></td></tr>
+  <tr class = "small-screen-label"><td><label for="comment">Task:</label></td></tr>
   <tr>
-    <td class = "large-screen-label"><label for="comment">{$i18n.label.week_note}:</label></td>
+    <td class = "large-screen-label"><label for="comment">Task:</label></td>
     <td class="td-with-input">{$forms.weekTimeForm.comment.control}</td>
   </tr>
   <tr><td><div class="small-screen-form-control-separator"></div></td></tr>
@@ -94,7 +121,7 @@ function fillDropdowns() {
     <td>{$forms.weekTimeForm.week_durations.control}</td>
   </tr>
 </table>
-<div style="display: inline-block; vertical-align: top; margin-top: 38px;">{$forms.weekTimeForm.btn_submit.control}</div>
+
 </div>
 
 <div class="button-set" style="width:100%; clear:both;">{$forms.weekTimeForm.btn_submit.control}</div>
@@ -124,7 +151,7 @@ function fillDropdowns() {
     <th>{$i18n.label.finish}</th>
   {/if}
     <th>{$i18n.label.duration}</th>
-    <th>{$i18n.label.note}</th>
+    <th>Task</th>
   {if $show_files}
     <th></th>
   {/if}

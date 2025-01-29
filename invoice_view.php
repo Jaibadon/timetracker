@@ -45,6 +45,7 @@ if ($tax_percent > 0) {
     $tax += round($item['cost'] * $tax_percent / 100, 2);
   }
 }
+
 $total = $subtotal + $tax;
 
 $currency = $user->getCurrency();

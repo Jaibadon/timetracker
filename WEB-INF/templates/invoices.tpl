@@ -3,6 +3,9 @@ License: See license.txt *}
 
 <script>
   function chLocation(newLocation) { document.location = newLocation; }
+  if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
 </script>
 
 {if $show_sorting_options}
@@ -29,7 +32,9 @@ License: See license.txt *}
     <th>{$i18n.label.invoice}</th>
     <th>{$i18n.label.client}</th>
     <th>{$i18n.label.date}</th>
+    <th>Subtotal</th>
 {if $user->isPluginEnabled('ps')}
+    <th>Sent</th>
     <th>{$i18n.label.paid}</th>
 {/if}
 {if !$user->isClient()}
@@ -38,10 +43,12 @@ License: See license.txt *}
   </tr>
 {foreach $invoices as $invoice}
   <tr>
-    <td class="text-cell"><a href="invoice_view.php?id={$invoice.id}">{$invoice.name|escape}</a></td>
+    <td class="text-cell"><a href="new_invoice_view.php?id={$invoice.id}">{$invoice.name|escape}</a></td>
     <td class="text-cell">{$invoice.client|escape}</td>
     <td class="date-cell">{$invoice.date}</td>
+    <td class="text-cell">${$invoice.subtotal}</td>
   {if $user->isPluginEnabled('ps')}
+    <td class="yes-no-cell">{if $invoice.Sent}{$i18n.label.yes}{else}{$i18n.label.no}{/if}</td>
     <td class="yes-no-cell">{if $invoice.paid}{$i18n.label.yes}{else}{$i18n.label.no}{/if}</td>
   {/if}
   {if !$user->isClient()}

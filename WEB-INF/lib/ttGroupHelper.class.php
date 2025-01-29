@@ -263,13 +263,24 @@ class ttGroupHelper {
   }
 
   // The getActiveClients returns an array of active clients for a group.
-  static function getActiveClients($all_fields = false)
+  static function getActiveClients($all_fields = false, $project_id = null)
   {
     global $user;
     $mdb2 = getConnection();
 
     $group_id = $user->getGroup();
     $org_id = $user->org_id;
+
+        // If project_id is provided, return the client for that project.
+      if ($project_id !== null) {
+          $sql = "select Client_ID from tt_projects where id = $project_id";
+          $res = $mdb2->query($sql);
+          if (!is_a($res, 'PEAR_Error')) {
+            $client_id = $res->fetchOne(); // Fetches the first column of the first row directly.
+            return $client_id !== null ? (int) $client_id : null; // Cast to integer or return null.
+        }
+          return null; // Return null if no client is found.
+      }
     if ($all_fields)
       $sql = "select * from tt_clients where group_id = $group_id and org_id = $org_id and status = 1 order by upper(name)";
     else
@@ -412,7 +423,7 @@ class ttGroupHelper {
       $client_part = "and i.client_id = $user->client_id";
 
     // Prepare order by part.
-    $order_by_part = 'order  by ';
+    $order_by_part = 'order by ';
     if (!$sort_options)
       $order_by_part .= 'name';
     else {
@@ -425,7 +436,7 @@ class ttGroupHelper {
       }
     }
 
-    $sql = "select i.id, i.name, i.date, i.client_id, i.status, c.name as client from tt_invoices i".
+    $sql = "select i.id, i.name, i.date, i.client_id, i.status, i.subtotal, c.name as client from tt_invoices i".
       " left join tt_clients c on (c.id = i.client_id)".
       " where i.status = 1 and i.group_id = $group_id and i.org_id = $org_id $client_part $order_by_part";
     $res = $mdb2->query($sql);

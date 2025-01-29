@@ -17,7 +17,7 @@ License: See license.txt *}
   <tr><td><div class="small-screen-form-control-separator"></div></td></tr>
   <tr class = "small-screen-label"><td><label for="client">{$i18n.label.client}:</label></td></tr>
   <tr>
-    <td class="large-screen-label"><label for="client">{$i18n.label.client}:</label></td>
+    <td class="large-screen-label"><label for="client">Due date:</label></td>
     <td class="td-with-input">{$forms.invoiceForm.client.control}</td>
   </tr>
   <tr><td><div class="small-screen-form-control-separator"></div></td></tr>
@@ -54,4 +54,5 @@ if (dateField && !dateField.value) {
   var today = new Date();
   dateField.value = today.strftime("{$user->date_format}");
 }
+
 </script>
